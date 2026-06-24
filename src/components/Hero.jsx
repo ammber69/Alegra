@@ -14,7 +14,8 @@ export default function Hero({ onQuoteClick, onJoinClick }) {
 
   const scrollDown = () => {
     const el = document.getElementById('nosotros')
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (!el) return
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' })
   }
 
   const parallaxOffset = scrollY * 0.4

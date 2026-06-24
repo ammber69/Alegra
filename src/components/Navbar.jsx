@@ -41,7 +41,10 @@ export default function Navbar({ onJoinClick }) {
     close()
     const id = href.replace('#', '')
     const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (!el) return
+    // Use scrollTo instead of scrollIntoView — compatible with scroll-snap-type: mandatory
+    const top = el.getBoundingClientRect().top + window.scrollY
+    window.scrollTo({ top, behavior: 'smooth' })
   }
 
   return (

@@ -61,13 +61,19 @@ export default function Timeline() {
     return () => clearInterval(timerRef.current)
   }, [paused]) // eslint-disable-line
 
-  // Scroll active node into view on mobile
+  // Scroll active node into view INSIDE the track only (never move page Y)
   useEffect(() => {
-    if (!trackRef.current) return
-    const nodes = trackRef.current.querySelectorAll('.timeline-node')
-    if (nodes[active]) {
-      nodes[active].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-    }
+    const track = trackRef.current
+    if (!track) return
+    const nodes = track.querySelectorAll('.timeline-node')
+    const node = nodes[active]
+    if (!node) return
+    // Manually scroll the track element horizontally so it never affects page scroll
+    const trackRect = track.getBoundingClientRect()
+    const nodeRect  = node.getBoundingClientRect()
+    const offsetLeft = nodeRect.left - trackRect.left + track.scrollLeft
+    const center = offsetLeft - trackRect.width / 2 + nodeRect.width / 2
+    track.scrollTo({ left: center, behavior: 'smooth' })
   }, [active])
 
   // Fade-in → fade-out → update → fade-in

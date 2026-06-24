@@ -27,7 +27,8 @@ export default function Footer() {
   const handleLink = (e, href) => {
     e.preventDefault()
     const el = document.getElementById(href.replace('#', ''))
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (!el) return
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' })
   }
 
   return (
