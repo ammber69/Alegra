@@ -1,0 +1,215 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 18px 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+}
+
+.navbar--scrolled {
+  background: rgba(0, 30, 80, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 12px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar--open {
+  background: var(--blue-dark, #001f5c) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.95)) drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar--scrolled .navbar-logo-img {
+  height: 44px;
+}
+
+/* Desktop links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar-link {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+}
+
+.navbar-link.active {
+  color: var(--gold-light, #F0D060);
+}
+
+/* Actions */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.navbar-phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.navbar-phone:hover {
+  color: #fff;
+}
+
+/* Hamburger */
+.navbar-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  margin-left: auto;
+}
+
+.navbar-hamburger:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Mobile menu - Frosted Glass floating style (iOS style) */
+.navbar-mobile {
+  display: none;
+  position: fixed;
+  top: 86px;
+  left: 16px;
+  right: 16px;
+  background: rgba(0, 15, 50, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  z-index: 850;
+  padding: 20px 18px;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  box-shadow: 
+    0 15px 35px rgba(0, 10, 30, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.navbar--scrolled .navbar-mobile {
+  top: 76px;
+}
+
+.navbar-mobile.open {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.navbar-mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.navbar-mobile-link:hover,
+.navbar-mobile-link.active {
+  background: rgba(255,255,255,0.12);
+  color: var(--gold-light, #F0D060);
+}
+
+.navbar-mobile-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Overlay */
+.navbar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 840;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .navbar-links,
+  .navbar-actions .btn { display: none; }
+  .navbar-hamburger { display: flex; }
+  .navbar-mobile { display: block; }
+  .navbar-actions .navbar-phone { display: none; }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo-text { display: none; }
+}

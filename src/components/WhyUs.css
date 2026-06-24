@@ -1,0 +1,159 @@
+/* ==============================================
+   WHY US SECTION - PROFESSIONAL STYLING
+   ============================================== */
+.whyus-section {
+  position: relative;
+}
+
+.whyus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.whyus-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px 18px;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns all children vertically to the left */
+}
+
+.whyus-card:hover {
+  border-color: rgba(0, 0, 0, 0.22);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 30, 80, 0.06);
+}
+
+/* Icon pastilla */
+.whyus-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--icon-bg);
+  color: var(--accent);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.whyus-card:hover .whyus-icon-wrapper {
+  transform: scale(1.05);
+}
+
+/* Metric styles */
+.whyus-metric {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.whyus-metric-label {
+  display: block;
+  font-size: 11px;
+  color: var(--grey-mid);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+/* Title & Description */
+.whyus-title {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-darker);
+  margin-bottom: 6px;
+}
+
+.whyus-desc {
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ---- Horizontal CTA Bar ---- */
+.whyus-cta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #001f5c 0%, #003087 60%, #0044bb 100%);
+  border-radius: 16px;
+  padding: 24px 36px;
+  gap: 32px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-blue);
+}
+
+.whyus-cta-bar::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+
+.whyus-cta-content {
+  flex: 1;
+  min-width: 260px;
+}
+
+.whyus-cta-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.whyus-cta-sub {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* ---- Responsive Grid ---- */
+@media (max-width: 1024px) {
+  .whyus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .whyus-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .whyus-cta-bar {
+    flex-direction: column;
+    padding: 24px 20px;
+    text-align: center;
+    gap: 20px;
+  }
+  .whyus-cta-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

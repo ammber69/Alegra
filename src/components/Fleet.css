@@ -1,0 +1,236 @@
+.fleet-section {
+  background: var(--white);
+}
+
+/* Slider */
+.fleet-slider {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+@media (min-width: 901px) {
+  .fleet-slider {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.fleet-slide {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 16/7;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+
+@media (min-width: 901px) {
+  .fleet-slide {
+    aspect-ratio: 2.5/1;
+  }
+}
+
+.fleet-slide.transitioning {
+  opacity: 0;
+}
+
+.fleet-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fleet-slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+  padding: 40px 32px 28px;
+}
+
+.fleet-slide-badge {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.fleet-slide-label {
+  color: rgba(255,255,255,0.9);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Arrows */
+.fleet-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.fleet-arrow:hover {
+  background: var(--white);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: var(--shadow-lg);
+}
+
+.fleet-arrow--left { left: -20px; }
+.fleet-arrow--right { right: -20px; }
+
+/* Dots */
+.fleet-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.fleet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fleet-dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+/* Thumbnails */
+.fleet-thumbs {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 4px 0;
+}
+
+@media (min-width: 901px) {
+  .fleet-thumbs {
+    max-width: 400px;
+    margin: 12px auto 0;
+  }
+}
+
+.fleet-thumb {
+  flex: 1;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  background: none;
+  padding: 0;
+}
+
+.fleet-thumb:hover {
+  transform: scale(1.03);
+}
+
+.fleet-thumb.active {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px var(--blue-light);
+}
+
+.fleet-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fleet stats */
+.fleet-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.fleet-stat {
+  background: var(--grey-light);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  border: 1px solid var(--grey);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fleet-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  background: var(--white);
+}
+
+.fleet-stat-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(0,48,135,0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.fleet-stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.fleet-stat-label {
+  font-size: 0.78rem;
+  color: var(--grey-mid);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .fleet-arrow { display: none; }
+  .fleet-thumbs { gap: 8px; }
+  .fleet-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .fleet-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
