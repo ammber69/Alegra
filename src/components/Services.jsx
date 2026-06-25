@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Box, Layers, MapPin, Star, ArrowRight, MessageCircle, Check, ChevronLeft, ChevronRight } from 'lucide-react'
 import './Services.css'
 
@@ -51,12 +51,16 @@ const services = [
   },
 ]
 
-function ServiceCard({ service, onQuote, index }) {
+function ServiceCard({ service, onQuote, index, isActive }) {
   const Icon = service.icon
   const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(service.whatsappMsg)}`
 
   return (
-    <div className="svc-card" style={{ '--svc-delay': `${index * 0.1}s` }}>
+    <div
+      className="svc-card"
+      style={{ '--svc-delay': `${index * 0.1}s` }}
+      data-active={isActive ? 'true' : 'false'}
+    >
       {/* Gradient header */}
       <div className="svc-card-header" style={{ background: service.gradient }}>
         <div className="svc-card-header-pattern" />
@@ -107,6 +111,7 @@ function ServiceCard({ service, onQuote, index }) {
 export default function Services({ onQuoteClick }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const viewportRef = useRef(null)
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 900)
@@ -118,13 +123,15 @@ export default function Services({ onQuoteClick }) {
   const cardsToShow = isMobile ? 1 : 2
   const maxIndex = services.length - cardsToShow
 
-  const nextSlide = () => {
-    setCurrentIndex(prev => Math.min(prev + 1, maxIndex))
+  // On mobile: just update currentIndex (CSS handles visibility)
+  // On desktop: update currentIndex for CSS transform
+  const goTo = (index) => {
+    const max = isMobile ? services.length - 1 : maxIndex
+    setCurrentIndex(Math.max(0, Math.min(index, max)))
   }
-  
-  const prevSlide = () => {
-    setCurrentIndex(prev => Math.max(prev - 1, 0))
-  }
+
+  const nextSlide = () => goTo(currentIndex + 1)
+  const prevSlide = () => goTo(currentIndex - 1)
 
   // Adjust current index if it exceeds maxIndex due to resize
   useEffect(() => {
@@ -156,13 +163,22 @@ export default function Services({ onQuoteClick }) {
             <ChevronLeft size={24} />
           </button>
           
-          <div className="svc-slider-viewport">
+          <div
+            className="svc-slider-viewport"
+            ref={viewportRef}
+          >
             <div 
               className="svc-slider-track" 
               style={{ '--current-index': currentIndex }}
             >
               {services.map((s, i) => (
-                <ServiceCard key={i} service={s} onQuote={onQuoteClick} index={i} />
+                <ServiceCard
+                  key={i}
+                  service={s}
+                  onQuote={onQuoteClick}
+                  index={i}
+                  isActive={isMobile ? i === currentIndex : true}
+                />
               ))}
             </div>
           </div>
@@ -170,7 +186,7 @@ export default function Services({ onQuoteClick }) {
           <button 
             className="svc-arrow svc-arrow--right" 
             onClick={nextSlide} 
-            disabled={currentIndex === maxIndex}
+            disabled={isMobile ? currentIndex >= services.length - 1 : currentIndex === maxIndex}
             aria-label="Next service"
           >
             <ChevronRight size={24} />
@@ -178,11 +194,11 @@ export default function Services({ onQuoteClick }) {
         </div>
 
         <div className="svc-dots">
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+          {Array.from({ length: isMobile ? services.length : maxIndex + 1 }).map((_, i) => (
             <button
               key={i}
               className={`svc-dot ${currentIndex === i ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(i)}
+              onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}

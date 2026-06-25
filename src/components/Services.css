@@ -6,6 +6,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 900px) {
+  /* Allow card shadow to show without being clipped */
+  .services-section {
+    overflow: visible;
+  }
+}
+
 .services-section::before {
   content: '';
   position: absolute;
@@ -39,20 +46,14 @@
   margin-bottom: 12px;
 }
 
-@media (max-width: 900px) {
-  /* On mobile, arrows are hidden so remove the negative-positioned space they occupy */
-  .svc-slider-container {
-    overflow: hidden;
-  }
-}
-
+/* =====================
+   DESKTOP: arrow-driven carousel with translateX
+   ===================== */
 .svc-slider-viewport {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  padding: 10px 0;
-  margin: -10px 0;
 }
 
 .svc-slider-track {
@@ -64,11 +65,47 @@
   transform: translateX(calc(-1 * var(--current-index) * (50% + 12px)));
 }
 
+/* =====================
+   MOBILE: show only active card, fade transition
+   ===================== */
 @media (max-width: 900px) {
+  .svc-slider-container {
+    overflow: visible;
+  }
+
+  .svc-slider-viewport {
+    overflow: visible;
+    /* Small horizontal padding so the card shadow isn't clipped */
+    padding: 0 4px;
+  }
+
   .svc-slider-track {
-    /* Each card is 100% wide; gap doesn't matter since only 1 card is visible */
-    transform: translateX(calc(-1 * var(--current-index) * 100%));
+    /* Stack all cards, show only the active one */
+    position: relative;
+    display: block;
+    transform: none !important;
+    transition: none;
     gap: 0;
+    width: 100%;
+  }
+
+  /* All cards hidden by default on mobile */
+  .svc-slider-track .svc-card {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    animation: svcFadeIn 0.3s ease both;
+  }
+
+  /* Only the active card (data-active=true) is shown */
+  .svc-slider-track .svc-card[data-active="true"] {
+    display: flex;
+  }
+
+  @keyframes svcFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
   }
 }
 
@@ -144,6 +181,7 @@
 /* ---- Card ---- */
 .svc-card {
   flex: 0 0 calc(50% - 12px);
+  min-width: 0;
   background: var(--white);
   border-radius: 20px;
   overflow: hidden;
@@ -483,24 +521,19 @@
 }
 
 @media (max-width: 900px) {
-  .svc-slider-track .svc-card {
-    flex: 0 0 100%;
+  /* Cards are hidden/shown via data-active in CSS above.
+     When displayed, ensure full-width, no overflow */
+  .svc-slider-track .svc-card[data-active="true"] {
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
   }
+
   .svc-arrow {
     display: none;
   }
   .svc-features {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .svc-slider-track .svc-card {
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
   }
 }
 

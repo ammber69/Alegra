@@ -152,6 +152,9 @@
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  /* Guarantee text wraps inside the card */
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .timeline-card-year {
@@ -169,12 +172,16 @@
   gap: 14px;
   margin-bottom: 16px;
   min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .timeline-card-content > div {
   min-width: 0;
   flex: 1;
   overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .timeline-card-icon {

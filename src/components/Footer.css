@@ -4,6 +4,12 @@
   position: relative;
 }
 
+@media (min-width: 901px) {
+  .footer {
+    scroll-snap-align: end;
+  }
+}
+
 /* Brand stripe top */
 .footer-stripe {
   display: flex;
@@ -176,10 +182,18 @@
   color: rgba(255,255,255,0.5);
   text-decoration: none;
   transition: color 0.2s;
+  margin-top: 14px;
 }
 
 .footer-map-link:hover {
   color: rgba(255,255,255,0.85);
+}
+
+.footer-address-text {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 4px;
 }
 
 /* Bottom bar */
