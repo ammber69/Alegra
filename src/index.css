@@ -60,6 +60,7 @@ html {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+  overscroll-behavior-y: none;
 }
 
 /* CSS Scroll Snap — Apple-style full-section scrolling (desktop only) */
@@ -83,6 +84,7 @@ body {
   max-width: 100%;
   line-height: 1.6;
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
 }
 
 #root {

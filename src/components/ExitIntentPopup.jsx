@@ -49,36 +49,51 @@ export default function ExitIntentPopup({ onQuoteClick }) {
   return (
     <div className="exit-overlay" onClick={e => e.target === e.currentTarget && close()}>
       <div className="exit-popup">
+        {/* Top brand accent lines */}
+        <div className="exit-accent-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
         <button className="exit-close" onClick={close} aria-label="Cerrar">
           <X size={18} />
         </button>
 
-        <div className="exit-emoji">🚛</div>
+        <div className="exit-header">
+          <span className="exit-badge">Respuesta en menos de 2h ⚡</span>
+          <div className="exit-emoji-wrapper">
+            <span className="exit-emoji" role="img" aria-label="Camión">🚛</span>
+          </div>
+        </div>
 
         <h3 className="exit-title">¿Te vas sin cotizar?</h3>
+        
         <p className="exit-desc">
-          Déjanos ayudarte. En <strong>menos de 2 horas</strong> te enviamos una cotización
-          personalizada para tu carga. <strong>Sin compromiso.</strong>
+          Déjanos ayudarte. Te enviamos una <strong>cotización personalizada</strong> para tu carga en tiempo récord. <strong>¡Totalmente sin compromiso!</strong>
         </p>
 
         <div className="exit-actions">
-          <button className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }}
-            onClick={() => { close(); onQuoteClick() }}>
-            Sí, quiero mi cotización
+          <button 
+            className="btn btn-primary btn-exit-primary"
+            onClick={() => { close(); onQuoteClick() }}
+          >
+            Obtener Cotización Gratis
           </button>
+          
           <a
             href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa cotizar un flete con Transportes Alegra.')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-whatsapp btn-lg"
-            style={{ width: '100%', justifyContent: 'center' }}
+            className="btn btn-whatsapp btn-exit-whatsapp"
             onClick={close}
           >
-            <MessageCircle size={16} /> Escribir por WhatsApp
+            <MessageCircle size={18} />
+            <span>Escribir por WhatsApp</span>
           </a>
         </div>
 
-        <button className="exit-dismiss" onClick={close}>No, gracias</button>
+        <button className="exit-dismiss" onClick={close}>No, gracias. Prefiero salir.</button>
       </div>
     </div>
   )
