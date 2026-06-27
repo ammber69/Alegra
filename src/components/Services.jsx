@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Box, Layers, MapPin, Star, ArrowRight, MessageCircle, Check, ChevronLeft, ChevronRight } from 'lucide-react'
 import './Services.css'
 
-const WHATSAPP = '522711675757'
+const WHATSAPP = '522713934494'
 
 const services = [
   {

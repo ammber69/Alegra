@@ -71,9 +71,9 @@ export default function Navbar({ onJoinClick }) {
 
           {/* Desktop CTA */}
           <div className="navbar-actions">
-            <a href="tel:+522711675757" className="navbar-phone">
+            <a href="tel:+522713934494" className="navbar-phone">
               <Phone size={15} />
-              271 167 5757
+              271 393 4494
             </a>
             <button className="btn btn-primary btn-sm" onClick={onJoinClick}>
               Únete al equipo <ChevronRight size={14} />
@@ -105,8 +105,8 @@ export default function Navbar({ onJoinClick }) {
             ))}
           </nav>
           <div className="navbar-mobile-cta">
-            <a href="tel:+522711675757" className="btn btn-secondary" style={{width:'100%',justifyContent:'center'}}>
-              <Phone size={16} /> Llamar: 271 167 5757
+            <a href="tel:+522713934494" className="btn btn-secondary" style={{width:'100%',justifyContent:'center'}}>
+              <Phone size={16} /> Llamar: 271 393 4494
             </a>
             <button className="btn btn-primary" style={{width:'100%',justifyContent:'center'}} onClick={() => { onJoinClick(); close() }}>
               Únete al equipo

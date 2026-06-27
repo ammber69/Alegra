@@ -1,7 +1,7 @@
 import { MessageCircle } from 'lucide-react'
 import './WhatsAppBubble.css'
 
-const WHATSAPP = '522711675757'
+const WHATSAPP = '522713934494'
 const MSG = 'Hola, quisiera cotizar un servicio de transporte con Transportes Alegra.'
 
 export default function WhatsAppBubble() {

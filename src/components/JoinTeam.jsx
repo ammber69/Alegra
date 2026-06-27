@@ -184,7 +184,7 @@ export default function JoinTeam({ onClose }) {
               Gracias por tu interés en Transportes Alegra. Nuestro equipo de RH se pondrá en contacto contigo en las próximas 24 horas.
             </p>
             <a
-              href={`https://wa.me/522711675757?text=${encodeURIComponent('Hola, acabo de enviar mi solicitud para unirme al equipo de Transportes Alegra.')}`}
+              href={`https://wa.me/522713934494?text=${encodeURIComponent('Hola, acabo de enviar mi solicitud para unirme al equipo de Transportes Alegra.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-whatsapp btn-lg"

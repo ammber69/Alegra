@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { X, MessageCircle } from 'lucide-react'
 import './ExitIntentPopup.css'
 
-const WHATSAPP = '522711675757'
+const WHATSAPP = '522713934494'
 const SESSION_KEY = 'alegra_exit_shown'
 
 export default function ExitIntentPopup({ onQuoteClick }) {

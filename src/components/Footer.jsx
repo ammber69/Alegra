@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, ArrowUp, MessageCircle } from 'lucide-react'
 import './Footer.css'
 
-const WHATSAPP = '522711675757'
+const WHATSAPP = '522713934494'
 
 const quickLinks = [
   { label: 'Inicio',        href: '#inicio' },
@@ -54,11 +54,11 @@ export default function Footer() {
             </p>
 
             <div className="footer-contact-items">
-              <a href="tel:+522711675757" className="footer-contact-item">
-                <Phone size={15} /> 271 167 5757
+              <a href="tel:+522713934494" className="footer-contact-item">
+                <Phone size={15} /> 271 393 4494
               </a>
-              <a href="mailto:contacto@transportesalegra.com" className="footer-contact-item">
-                <Mail size={15} /> contacto@transportesalegra.com
+              <a href="mailto:alegrarh.operadores@outlook.com" className="footer-contact-item">
+                <Mail size={15} /> alegrarh.operadores@outlook.com
               </a>
             </div>
 

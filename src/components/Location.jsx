@@ -52,7 +52,7 @@ export default function Location() {
               </div>
               <div>
                 <h4 className="location-card-title">Teléfono y WhatsApp</h4>
-                <a href="tel:+522711675757" className="location-card-link">271 167 5757</a>
+                <a href="tel:+522713934494" className="location-card-link">271 393 4494</a>
               </div>
             </div>
 

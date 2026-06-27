@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MapPin, Phone, Mail, MessageCircle, Send, CheckCircle, X, Lock, Zap } from 'lucide-react'
 import './ContactForm.css'
 
-const WHATSAPP = '522711675757'
+const WHATSAPP = '522713934494'
 
 export default function ContactForm({ isModal = false, onClose }) {
   const [step, setStep] = useState('form')
@@ -147,23 +147,23 @@ export default function ContactForm({ isModal = false, onClose }) {
             </p>
 
             <div className="contact-items">
-              <a href="tel:+522711675757" className="contact-item">
+              <a href="tel:+522713934494" className="contact-item">
                 <div className="contact-item-icon">
                   <Phone size={20} color="#fff" />
                 </div>
                 <div>
                   <p className="contact-item-label">Teléfono / WhatsApp</p>
-                  <p className="contact-item-value">271 167 5757</p>
+                  <p className="contact-item-value">271 393 4494</p>
                 </div>
               </a>
 
-              <a href="mailto:contacto@transportesalegra.com" className="contact-item">
+              <a href="mailto:alegrarh.operadores@outlook.com" className="contact-item">
                 <div className="contact-item-icon">
                   <Mail size={20} color="#fff" />
                 </div>
                 <div>
                   <p className="contact-item-label">Correo electrónico</p>
-                  <p className="contact-item-value">contacto@transportesalegra.com</p>
+                  <p className="contact-item-value">alegrarh.operadores@outlook.com</p>
                 </div>
               </a>
 

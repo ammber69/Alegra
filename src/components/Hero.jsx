@@ -87,8 +87,8 @@ export default function Hero({ onQuoteClick, onJoinClick }) {
           <button className="btn btn-outline btn-lg" onClick={onJoinClick}>
             Únete a nuestro equipo
           </button>
-          <a href="tel:+522711675757" className="btn btn-lg hero-btn-phone">
-            <Phone size={17} /> 271 167 5757
+          <a href="tel:+522713934494" className="btn btn-lg hero-btn-phone">
+            <Phone size={17} /> 271 393 4494
           </a>
         </div>
       </div>
