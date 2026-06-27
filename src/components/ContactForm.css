@@ -17,7 +17,7 @@
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1.25fr;
   gap: 64px;
   align-items: start;
   position: relative;
@@ -83,74 +83,115 @@
   justify-content: center;
 }
 
-/* Form box */
+/* Premium Redesigned Form Box */
 .contact-form-box {
-  background: var(--white);
-  border-radius: 20px;
-  padding: 36px 32px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-  border-top: 4px solid #D85A30;
+  background: linear-gradient(135deg, var(--white) 0%, #fcfdff 100%);
+  border-radius: 24px;
+  padding: 44px 40px;
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.1),
+    0 30px 60px -15px rgba(0, 15, 50, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 48, 135, 0.06);
+  position: relative;
   overflow: hidden;
+}
+
+/* Brand Accent Bar at the top of the card */
+.contact-form-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--red) 50%, var(--gold) 100%);
 }
 
 .contact-form-title {
   font-family: var(--font-heading);
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 800;
   color: var(--text-darker);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
 .contact-form-badges {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 
+/* Redesigned Badges */
 .contact-badge-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  background: #f3f4f6;
-  color: #4b5563;
-  font-size: 12px;
-  font-weight: 500;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
   border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+/* First badge: secure/no hidden costs (greenish) */
+.contact-form-badges .contact-badge-pill:nth-child(1) {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* Second badge: fast response (golden) */
+.contact-form-badges .contact-badge-pill:nth-child(2) {
+  background: rgba(212, 175, 55, 0.12);
+  color: #b58d10;
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .form-row-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 16px;
 }
 
-/* Fields override */
+/* Fields Layout */
 .contact-form-box .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .contact-form-box .form-label {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-darker);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .contact-form-box .form-input {
-  height: 44px;
-  border: 1px solid #E0E0E0;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  padding: 10px 14px;
+  height: 48px;
+  border: 1.5px solid var(--grey);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  padding: 12px 16px;
   background: var(--white);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-dark);
+}
+
+.contact-form-box .form-input:hover {
+  border-color: var(--grey-mid);
 }
 
 .contact-form-box .form-input:focus {
-  border-color: #185FA5;
-  box-shadow: 0 0 0 3px rgba(24, 95, 165, 0.15);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(0, 48, 135, 0.12);
+  background: var(--white);
+}
+
+.contact-form-box .form-input::placeholder {
+  color: var(--grey-mid);
 }
 
 /* Dropdown select custom styling */
@@ -161,49 +202,56 @@
 
 .contact-form-box .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23003087' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right 14px center;
+  background-position: right 16px center;
   background-size: 16px;
-  padding-right: 40px;
+  padding-right: 44px;
   width: 100%;
 }
 
 /* Textarea custom styling */
 .contact-form-box .form-textarea {
   height: auto;
-  min-height: 100px;
+  min-height: 110px;
   resize: vertical;
+  line-height: 1.5;
 }
 
 /* Buttons custom styling */
 .contact-form-box .contact-form-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 12px;
+  margin-top: 30px;
 }
 
+/* Submit Button: Premium Red Gradient */
 .contact-form-box .cf-submit {
   width: 100%;
-  height: 48px;
-  background: #D85A30;
-  border-color: #D85A30;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+  border: none;
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  flex: none;
+  gap: 10px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(227, 6, 19, 0.3);
+  cursor: pointer;
 }
 
 .contact-form-box .cf-submit:hover {
-  background: #bd4a24;
-  border-color: #bd4a24;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(227, 6, 19, 0.45);
+}
+
+.contact-form-box .cf-submit:active {
+  transform: translateY(0);
 }
 
 .contact-form-box .cf-submit.loading {
@@ -211,46 +259,56 @@
   pointer-events: none;
 }
 
+/* WhatsApp Secondary Button: Premium Outline/Fill */
 .contact-form-box .btn-wa-secondary {
   width: 100%;
-  height: 48px;
-  background: #fff;
-  border: 1.5px solid #25D366;
+  height: 52px;
+  background: transparent;
+  border: 2px solid #25D366;
   color: #25D366;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: background 0.2s ease, color 0.2s ease;
+  gap: 10px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.05);
+  cursor: pointer;
 }
 
 .contact-form-box .btn-wa-secondary:hover {
-  background: rgba(37, 211, 102, 0.05);
+  background: #25D366;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+}
+
+.contact-form-box .btn-wa-secondary:active {
+  transform: translateY(0);
 }
 
 .contact-form-box .text-red {
-  color: #E30613;
+  color: var(--red);
   margin-left: 2px;
 }
 
-/* Success */
+/* Success Card */
 .cf-success {
   text-align: center;
-  padding: 32px 16px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .cf-success h3 {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: var(--text-dark);
+  color: var(--text-darker);
 }
 
 .cf-success p {
@@ -259,44 +317,58 @@
   max-width: 360px;
 }
 
-/* Modal version */
+/* Modal version specific overrides */
 .cf-modal {
   max-width: 600px;
+  border: none;
+  border-radius: 24px;
+}
+
+.cf-modal::before {
+  display: none;
 }
 
 .cf-modal-header {
   background: linear-gradient(135deg, var(--blue-dark), var(--blue));
-  padding: 28px 32px 20px;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 36px 40px 24px;
+  border-radius: 24px 24px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .cf-modal-title {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: #fff;
-  margin-bottom: 4px;
+  color: var(--white);
+  margin-bottom: 6px;
 }
 
-.cf-modal-sub {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.7);
+.cf-modal-header .contact-badge-pill {
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.cf-modal .modal-body {
+  padding: 32px 40px 40px;
 }
 
 .cf-modal .modal-close {
-  color: #fff;
-  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  background: rgba(255,255,255,0.12);
+  top: 20px;
+  right: 20px;
 }
 
 .cf-modal .modal-close:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.22);
 }
 
-/* Responsive */
+/* Responsive design adjustments */
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
   .contact-wa-btn {
     width: auto;
@@ -304,8 +376,18 @@
 }
 
 @media (max-width: 520px) {
-  .form-row-2 { grid-template-columns: 1fr; }
-  .contact-form-box { padding: 24px 20px; }
-  .contact-form-actions { flex-direction: column; }
-  .cf-submit { flex: unset; width: 100%; }
+  .form-row-2 { 
+    grid-template-columns: 1fr; 
+    gap: 0;
+  }
+  .contact-form-box { 
+    padding: 32px 24px; 
+    border-radius: 20px;
+  }
+  .cf-modal-header {
+    padding: 28px 24px 20px;
+  }
+  .cf-modal .modal-body {
+    padding: 24px 24px 32px;
+  }
 }
