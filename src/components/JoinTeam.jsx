@@ -19,11 +19,42 @@ export default function JoinTeam({ onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate submission
+
+    const getLicenciaLabel = (val) => {
+      switch(val) {
+        case 'E': return 'Licencia Tipo E (Federal)';
+        case 'A': return 'Licencia Tipo A';
+        case 'B': return 'Licencia Tipo B';
+        default: return val || 'Otro';
+      }
+    }
+
+    const getExperienciaLabel = (val) => {
+      switch(val) {
+        case '1-2': return '1 a 2 años';
+        case '3-5': return '3 a 5 años';
+        case '5-10': return '5 a 10 años';
+        case '10+': return 'Más de 10 años';
+        default: return val || 'No especificado';
+      }
+    }
+
+    const text = `Hola Transportes Alegra, me interesa unirme a su equipo como operador. Aquí están mis datos de solicitud:
+
+👤 *Nombre:* ${form.nombre}
+📞 *Teléfono:* ${form.telefono}
+📍 *Ciudad de origen:* ${form.ciudad}
+🪪 *Tipo de licencia:* ${getLicenciaLabel(form.licencia)}
+🚛 *Experiencia:* ${getExperienciaLabel(form.experiencia)}
+📝 *Mensaje:* ${form.mensaje || 'Sin comentarios adicionales'}`;
+
+    const link = `https://wa.me/522713934494?text=${encodeURIComponent(text)}`;
+
     setTimeout(() => {
       setLoading(false)
       setStep('success')
-    }, 1500)
+      window.open(link, '_blank', 'noopener,noreferrer')
+    }, 800)
   }
 
   return (

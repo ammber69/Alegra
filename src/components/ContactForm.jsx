@@ -16,15 +16,36 @@ export default function ContactForm({ isModal = false, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
+
+    const getServiceLabel = (val) => {
+      switch(val) {
+        case 'caja-seca-full': return 'Caja Seca: Servicio Full';
+        case 'caja-seca-sencillo': return 'Caja Seca: Servicio Sencillo';
+        case 'tolva': return 'Transporte Granelero (Tolva)';
+        case 'dedicado': return 'Servicio Dedicado';
+        default: return val || 'Otro';
+      }
+    }
+
+    const text = `Hola Transportes Alegra, me interesa solicitar una cotización. Aquí están mis datos:
+
+👤 *Nombre:* ${form.nombre}
+🏢 *Empresa:* ${form.empresa || 'No especificada'}
+📞 *Teléfono:* ${form.telefono}
+✉️ *Correo:* ${form.email || 'No especificado'}
+🚛 *Servicio:* ${getServiceLabel(form.tipoCarga)}
+📝 *Detalles:* ${form.mensaje || 'Sin detalles adicionales'}`;
+
+    const link = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
     setTimeout(() => {
       setLoading(false)
       setStep('success')
-    }, 1500)
+      window.open(link, '_blank', 'noopener,noreferrer')
+    }, 800)
   }
 
-  const whatsappLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-    `Hola, soy ${form.nombre || '[Tu nombre]'} de ${form.empresa || '[Empresa]'}. Me interesa cotizar transporte de ${form.tipoCarga || 'carga'}. ¿Pueden ayudarme?`
-  )}`
+  const whatsappLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa cotizar un flete con Transportes Alegra.')}`
 
   const inner = (
     <>
